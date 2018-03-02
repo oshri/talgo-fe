@@ -1,6 +1,7 @@
 import { Component, Inject } from "@angular/core";
-import { Auth } from "../../services/auth/auth.service";
-import { IBalance } from "../../models/balance.interface";
+import { Observable, Subscribable } from "rxjs/Observable";
+import { MarketsSrv } from "../../services/markets/markets.service";
+import { IMarket } from "../../models";
 
 @Component({
   selector: "tg-markets-tabs",
@@ -8,11 +9,9 @@ import { IBalance } from "../../models/balance.interface";
   templateUrl: "./marketsTabs.component.html"
 })
 export class TgMarketsTabsComponent {
-  constructor(@Inject(Auth) private auth: Auth) {}
-
-  submit(event) {
-    this.auth.market("binance", event).subscribe((balance: IBalance[]) => {
-      console.log(balance);
-    });
+  marketsTabs$: Observable<IMarket[]>;
+  activeLinkIndex = 0;
+  constructor(@Inject(MarketsSrv) private marketsSrv: MarketsSrv) {
+    this.marketsTabs$ = this.marketsSrv.get();
   }
 }

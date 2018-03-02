@@ -8,23 +8,31 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
 
-import { TgMarketsTabsComponent } from "./components/marketsTabs/marketsTabs.component";
-import { TgMarketAuthComponent } from "./components/marketAuth/marketAuth.component";
+// App Modules
+import { TgCommonModule } from "../common";
+import { MarketsRouterModule } from "./routing.module";
 
-import { Auth } from "./services/auth/auth.service";
+// Services
+import { MarketsSrv } from "./services/markets/markets.service";
+
+// Components
+import { TgMarketsTabsComponent } from "./components/marketsTabs/marketsTabs.component";
+import { TgBinanceComponent } from "./components/binance/binance.component";
 
 @NgModule({
-  declarations: [TgMarketsTabsComponent, TgMarketAuthComponent],
+  declarations: [TgMarketsTabsComponent, TgBinanceComponent],
   imports: [
     CommonModule,
     FlexLayoutModule,
+    TgCommonModule,
     MatTabsModule,
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MarketsRouterModule
   ],
-  providers: [Auth],
+  providers: [MarketsSrv],
   exports: [TgMarketsTabsComponent]
 })
 export class MarketsModule {}

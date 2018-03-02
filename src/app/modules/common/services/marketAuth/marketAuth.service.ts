@@ -1,8 +1,7 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Observable } from "rxjs/Observable";
-import { IMarketAuth } from "../../models/marketAuth.interface";
-import { IBalance } from "../../models/balance.interface";
+import { IMarketAuth, IBalance } from "../../models";
 
 const BALANCE: IBalance[] = [
   {
@@ -78,12 +77,12 @@ const BALANCE: IBalance[] = [
 ];
 
 @Injectable()
-export class Auth {
-  private fakeBalanceResponse: BehaviorSubject<
+export class MarketsAuth {
+  private BinanceFakeBalanceResponse: BehaviorSubject<
     IBalance[]
   > = new BehaviorSubject(BALANCE);
 
   public market(name: string, IMarketAuth): Observable<IBalance[]> {
-    return this.fakeBalanceResponse;
+    return this.BinanceFakeBalanceResponse;
   }
 }

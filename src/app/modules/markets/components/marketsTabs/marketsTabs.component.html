@@ -1,5 +1,7 @@
-<mat-tab-group>
-    <mat-tab label="BINANCE">
-        <tg-market-auth (onSubmit)="submit($event)"></tg-market-auth>
-    </mat-tab>
-</mat-tab-group>
+<nav mat-tab-nav-bar aria-label="weather navigation links">
+    <a mat-tab-link *ngFor="let routeLink of (marketsTabs$ | async); let i = index" [routerLink]="routeLink.name.toLowerCase()"
+        [active]="activeLinkIndex === i" (click)="activeLinkIndex = i">
+        {{routeLink.name}}
+    </a>
+</nav>
+<router-outlet></router-outlet>

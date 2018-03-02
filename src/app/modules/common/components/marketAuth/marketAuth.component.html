@@ -1,0 +1,11 @@
+<form [formGroup]="form" fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-form-field fxFlex="45">
+        <input matInput formControlName="apiKey" placeholder="Api Key">
+    </mat-form-field>
+    <mat-form-field fxFlex="45">
+        <input matInput formControlName="apiSecret" placeholder="Api Secret">
+    </mat-form-field>
+    <button class="save-btn" mat-raised-button color="accent" type="submit" (click)="emitForm()" [disabled]="form.invalid">
+        Submit
+    </button>
+</form>

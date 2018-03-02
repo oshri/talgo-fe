@@ -1,1 +1,1 @@
-// export * from "./marketAuth.interface.ts";
+export * from "./market.interface";

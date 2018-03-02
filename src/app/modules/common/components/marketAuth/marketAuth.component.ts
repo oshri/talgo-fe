@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { FormGroup, FormControl, FormArray, Validators } from "@angular/forms";
-import { IMarketAuth } from "../../models/marketAuth.interface";
+import { IMarketAuth } from "../../models";
 
 @Component({
   selector: "tg-market-auth",
