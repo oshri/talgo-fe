@@ -1,4 +1,11 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpErrorResponse
+} from "@angular/common/http";
+import { RequestOptions, Request, RequestMethod } from "@angular/http";
+import { tap, catchError } from "rxjs/operators";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Observable } from "rxjs/Observable";
 import { IMarketAuth, IBalance } from "../../models";
@@ -78,11 +85,36 @@ const BALANCE: IBalance[] = [
 
 @Injectable()
 export class MarketsAuth {
+  private url: string = "http://guyt.pythonanywhere.com/";
   private BinanceFakeBalanceResponse: BehaviorSubject<
     IBalance[]
   > = new BehaviorSubject(BALANCE);
 
-  public market(name: string, IMarketAuth): Observable<IBalance[]> {
-    return this.BinanceFakeBalanceResponse;
+  constructor(@Inject(HttpClient) private http: HttpClient) {}
+  // public market(name: string, IMarketAuth): Observable<IBalance[]> {
+  //   return this.BinanceFakeBalanceResponse;
+  // }
+
+  public market(
+    marketName: string,
+    marketSecret: IMarketAuth
+  ): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      })
+    };
+
+    const url = `${this.url}${marketName}/account/balance`;
+    return this.http.post(url, marketSecret, httpOptions);
+  }
+
+  handleError(erros?: HttpErrorResponse) {
+    if (erros.error instanceof Error) {
+      console.log("Client-side error occured.");
+    } else {
+      console.log("Server-side error occured.");
+    }
   }
 }

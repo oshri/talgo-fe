@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
 
 // Material
 import { MatTabsModule } from "@angular/material/tabs";
@@ -30,7 +31,8 @@ import { TgBinanceComponent } from "./components/binance/binance.component";
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
-    MarketsRouterModule
+    MarketsRouterModule,
+    HttpClientModule
   ],
   providers: [MarketsSrv],
   exports: [TgMarketsTabsComponent]
