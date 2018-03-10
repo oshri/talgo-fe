@@ -85,7 +85,7 @@ const BALANCE: IBalance[] = [
 
 @Injectable()
 export class MarketsAuth {
-  private url: string = "http://guyt.pythonanywhere.com/";
+  private url: string = "https://guyt.pythonanywhere.com/";
   private BinanceFakeBalanceResponse: BehaviorSubject<
     IBalance[]
   > = new BehaviorSubject(BALANCE);
