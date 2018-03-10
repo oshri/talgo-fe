@@ -107,7 +107,7 @@ export class MarketsAuth {
     };
 
     const url = `${this.url}${marketName}/account/balance`;
-    return this.http.post(url, marketSecret, httpOptions);
+    return this.http.post(url, marketSecret);
   }
 
   handleError(erros?: HttpErrorResponse) {

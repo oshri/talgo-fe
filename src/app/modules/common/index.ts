@@ -13,6 +13,7 @@ const COMPONENTS = [TgMarketAuthComponent];
 
 // Services
 import { MarketsAuth } from "./services/marketAuth/marketAuth.service";
+import { UserSrv } from "./services/user/user.service";
 
 @NgModule({
   declarations: [...COMPONENTS],
@@ -25,7 +26,7 @@ import { MarketsAuth } from "./services/marketAuth/marketAuth.service";
     MatInputModule,
     MatButtonModule
   ],
-  providers: [MarketsAuth],
+  providers: [MarketsAuth, UserSrv],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class TgCommonModule {}
