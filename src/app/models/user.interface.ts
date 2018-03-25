@@ -1,4 +1,4 @@
-import { IMarketAuth } from './marketAuth.interface';
+import { IMarketAuth } from "../modules/common/models";
 
 export interface IUser {
   uid: string;

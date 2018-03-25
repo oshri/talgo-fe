@@ -1,21 +1,3 @@
-<div *ngIf="authSrv.user | async; then authenticated else guest">
+<div>
 
 </div>
-
-
-<ng-template #guest>
-  <button class="save-btn"
-          mat-raised-button
-          color="accent"
-          (click)="authSrv.facebookLogin()">
-    FACEBOOK
-  </button>
-</ng-template>
-
-<ng-template #authenticated>
-  <div *ngIf="authSrv.user | async as user">
-    <h2>Welcome back, {{user.displayName}}</h2>
-    <img [src]="user.photoUrl">
-    <p>UID: {{user.uid}}</p>
-  </div>
-</ng-template>

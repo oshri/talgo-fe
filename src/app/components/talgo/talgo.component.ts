@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, Inject } from "@angular/core";
+import { AuthSrv } from "../../services/auth/auth.service";
 
 @Component({
   selector: "talgo",
@@ -6,5 +7,5 @@ import { Component } from "@angular/core";
   styleUrls: ["./talgo.component.scss"]
 })
 export class TalGoComponent {
-  appName: string = "TalGo";
+  constructor(@Inject(AuthSrv) public authSrv: AuthSrv) {}
 }

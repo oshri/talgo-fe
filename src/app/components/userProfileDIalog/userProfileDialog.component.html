@@ -1,0 +1,15 @@
+<mat-dialog-content class="user-profile">
+    <div fxLayout="column" fxLayoutAlign="space-between none">
+        <div fxLayout="row" fxLayoutAlign="end center">
+            <button mat-icon-button color="primary" [mat-dialog-close]="true">
+                <mat-icon aria-label="Close Dialog Profile">close</mat-icon>
+            </button>
+        </div>
+
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <button class="logout-btn" (click)="logout()" mat-button>Logout</button>
+    </div>
+</mat-dialog-actions>

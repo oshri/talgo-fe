@@ -1,0 +1,25 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>My Balance</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-list>
+            <h2 mat-subheader fxLayout="row" fxLayoutAlign="space-around none">
+                <span fxFlex="33">ASSET</span>
+                <span fxFlex="33">FREE</span>
+                <span fxFlex="33">LOCKED</span>
+            </h2>
+            <mat-divider></mat-divider>
+            <mat-list-item class="balance-item" *ngFor="let item of list; last as last">
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxFill>
+                    <span fxFlex="33">
+                        <b>{{item.asset}}</b>
+                    </span>
+                    <span fxFlex="33">{{item.free}}</span>
+                    <span fxFlex="33">{{item.locked}}</span>
+                </div>
+                <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+</mat-card>

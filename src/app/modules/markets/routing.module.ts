@@ -1,18 +1,18 @@
-import { Routes, RouterModule } from '@angular/router';
-import { TgMarketsTabsComponent } from './components/marketsTabs/marketsTabs.component';
-import { TgBinanceComponent } from './components/binance/binance.component';
+import { Routes, RouterModule } from "@angular/router";
+import { TgMarketsTabsComponent } from "./components/marketsTabs/marketsTabs.component";
+import { TgBinanceComponent } from "./components/binance/binance.component";
 
 const MARKETS_ROUTES: Routes = [
   {
-    path: '',
+    path: "",
     component: TgMarketsTabsComponent,
     children: [
       {
-        path: '',
-        redirectTo: 'binance'
+        path: "",
+        redirectTo: "binance"
       },
       {
-        path: 'binance',
+        path: "binance",
         component: TgBinanceComponent
       }
     ]
