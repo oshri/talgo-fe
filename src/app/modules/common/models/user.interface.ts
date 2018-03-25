@@ -1,8 +1,10 @@
-import { IMarketAuth } from "./marketAuth.interface";
+import { IMarketAuth } from './marketAuth.interface';
 
 export interface IUser {
-  firstName: string;
-  lastName: string;
+  uid: string;
+  email: string;
+  photoUrl?: string;
+  displayName?: string;
   markets?: IUserMarket;
 }
 

@@ -13,8 +13,8 @@ export class TgMarketAuthComponent implements OnInit {
 
   ngOnInit() {
     this.form = new FormGroup({
-      apiKey: new FormControl("", [Validators.required]),
-      apiSecret: new FormControl("", [Validators.required])
+      apiKey: new FormControl("0fMbfnBaPbP2qevMNHvt5YHhdyZ15CcTHiOKgqwmDeyq41JtyTUsB8EfBixWurNa", [Validators.required]),
+      apiSecret: new FormControl("mnuklEVS3ygcpUlXaWaGwBTXRrBol6ZMHXRnN2LdtEwpLJbmYHcH5LQpu7TnqPPs", [Validators.required])
     });
   }
 
