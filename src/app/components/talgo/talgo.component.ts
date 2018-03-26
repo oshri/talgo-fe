@@ -1,10 +1,17 @@
-import { Component } from "@angular/core";
+import { Component, Inject } from "@angular/core";
+import { AuthSrv } from "../../services/auth/auth.service";
+import {
+  fadeInAnimation,
+  slideInOutAnimation
+} from "../../utils/routerTransition/routerTransition";
 
 @Component({
   selector: "talgo",
   templateUrl: "./talgo.component.html",
-  styleUrls: ["./talgo.component.scss"]
+  styleUrls: ["./talgo.component.scss"],
+  animations: [fadeInAnimation],
+  host: { "[@fadeInAnimation]": "" }
 })
 export class TalGoComponent {
-  appName: string = "TalGo";
+  constructor(@Inject(AuthSrv) public authSrv: AuthSrv) {}
 }

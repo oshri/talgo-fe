@@ -1,0 +1,14 @@
+<mat-toolbar class="app-header" color="primary" [@authenticated]="authenticated">
+        <mat-toolbar-row>
+                <div class="talGo-app-icon" fxFlex="183px">
+                        <span [class.white]="authenticated">TalGo</span>
+                </div>
+                <div class="common-links" fxFlex="80%"></div>
+                <div fxLayout="row" fxLayoutAlign="end center">
+                        <tg-user *ngIf="authenticated" [user]="authSrv.user | async" fxFlex="190px"></tg-user>
+                        <button *ngIf="!authenticated" class="save-btn" fxFlex="80px" mat-raised-button color="accent" (click)="authSrv.facebookLogin()">
+                                LOGIN
+                        </button>
+                </div>
+        </mat-toolbar-row>
+</mat-toolbar>

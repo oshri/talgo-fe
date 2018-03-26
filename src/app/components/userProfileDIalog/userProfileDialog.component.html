@@ -1,0 +1,21 @@
+<mat-dialog-content>
+    <div fxLayout="column" fxLayoutAlign="space-between none">
+        <div fxLayout="row" fxLayoutAlign="end center">
+            <button mat-icon-button color="primary" [mat-dialog-close]="true">
+                <mat-icon aria-label="Close Dialog Profile">close</mat-icon>
+            </button>
+        </div>
+        <div class="user-profile" fxLayout="column" fxLayoutAlign="space-between center">
+            <div class="user-avatar">
+                <img [src]="data.user.photoUrl">
+            </div>
+
+            <span class="user-name">{{data.user.displayName}}</span>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <div fxLayout="row" fxLayoutAlign="end center">
+        <button class="logout-btn" (click)="logout()" mat-button>Logout</button>
+    </div>
+</mat-dialog-actions>

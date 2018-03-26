@@ -1,7 +1,14 @@
 import { Component, OnInit, Output, EventEmitter, Inject } from "@angular/core";
 import { FormGroup, FormControl, FormArray, Validators } from "@angular/forms";
-import { IMarketAuth } from "../../../common/models";
+import { Observable, Subscriber } from "rxjs";
+import { IMarketAuth, IBalance } from "../../../common/models";
 import { MarketsAuth } from "../../../common/services/marketAuth/marketAuth.service";
+import {
+  slideInOutAnimation,
+  fadeInAnimation
+} from "../../../../utils/routerTransition/routerTransition";
+
+import { LoadingService } from "../../../../modules/loading/services/loading/loading.service";
 
 @Component({
   selector: "tg-binance",
@@ -9,11 +16,19 @@ import { MarketsAuth } from "../../../common/services/marketAuth/marketAuth.serv
   templateUrl: "./binance.component.html"
 })
 export class TgBinanceComponent {
-  constructor(@Inject(MarketsAuth) private marketsAuth: MarketsAuth) {}
+  balance: IBalance[];
+
+  constructor(
+    @Inject(LoadingService) private Loading: LoadingService,
+    @Inject(MarketsAuth) private marketsAuth: MarketsAuth
+  ) {}
 
   submit(event: IMarketAuth) {
-    this.marketsAuth.market("binance", event).subscribe(res => {
-      console.log(res);
-    });
+    this.marketsAuth
+      .market("binance", event)
+      .subscribe((response: IBalance[]) => {
+        this.Loading.setValue(false);
+        this.balance = response;
+      });
   }
 }

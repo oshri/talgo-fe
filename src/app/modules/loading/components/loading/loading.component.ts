@@ -26,7 +26,7 @@ import { LoadingService } from "../../services/loading/loading.service";
       state(
         "active",
         style({
-          opacity: 1
+          opacity: 0.5
         })
       ),
       transition("active => inactive", animate("200ms ease-out")),

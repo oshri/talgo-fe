@@ -1,12 +1,45 @@
-import { Component, Input, OnInit, OnDestroy, Inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+  Inject
+} from "@angular/core";
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import { Observable } from "rxjs/Observable";
+import { IUser } from "../../models";
+import { AuthSrv } from "../../services/auth/auth.service";
+import { UserProfileDialogComponent } from "../userProfileDIalog/userProfileDialog.component";
 
 @Component({
-  selector: 'tg-user',
-  styleUrls: ['user.component.scss'],
-  templateUrl: 'user.component.html'
+  selector: "tg-user",
+  templateUrl: "user.component.html",
+  styleUrls: ["user.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TgUserComponent {
-  constructor(@Inject(Router) private router: Router) {}
+  @Input() authenticated: boolean;
+  @Input() user: IUser;
+
+  constructor(
+    @Inject(AuthSrv) public authSrv: AuthSrv,
+    @Inject(MatDialog) public dialog: MatDialog
+  ) {
+    // this.user = this.authSrv.user;
+  }
+
+  openDialog() {
+    let dialogRef = this.dialog.open(UserProfileDialogComponent, {
+      width: "400px",
+      height: "400px",
+      data: {
+        user: this.user
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("after closed", result);
+    });
+  }
 }

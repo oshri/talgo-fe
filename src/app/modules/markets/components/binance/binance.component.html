@@ -1,3 +1,11 @@
-<div>
+<div fxLayout="column" fxLayoutAlign="space-around none">
     <tg-market-auth (onSubmit)="submit($event)"></tg-market-auth>
+    <div class="content" fxLayout="row" *ngIf="balance">
+        <tg-balance [list]="balance" fxFlex="400px"></tg-balance>
+        <div fxLayout="column" fxLayoutAlign="space-around none" fxFlex>
+            <div fxLayout="row" fxLayoutAlign="space-around none">
+
+            </div>
+        </div>
+    </div>
 </div>
