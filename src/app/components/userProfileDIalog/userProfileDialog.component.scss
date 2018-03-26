@@ -1,67 +1,64 @@
-:host(user-profile-dialog){
-    .user-profile{
+:host(user-profile-dialog) {
+  .user-profile {
+    .user-avatar {
+      width: 150px;
+      height: 150px;
+      margin-right: auto;
+      margin-left: auto;
+      text-align: center;
+      padding: 5px;
 
-        .user-avatar{
-                width: 150px;
-                height: 150px;
-                margin-right: auto;
-                margin-left: auto;
-                text-align: center;
-                padding: 5px;
-
-            img{
-                border-radius: 50%;
-                width: 100%;
-                height: 100%;
-                border: 1px solid #d6d6d6;
-                padding: 1px;
-            }
-        }
-
-        span.user-name{
-            text-align: center;
-            font-size: 21px;
-            font-weight: 100;
-            padding: 17px;
-        }
-
+      img {
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+        border: 1px solid #d6d6d6;
+        padding: 1px;
+      }
     }
 
-    .mat-dialog-actions{
-
-
-        .logout-btn{
-            font-size: 13px;
-            color: #aaa;
-            cursor: pointer;
-            transition: color .2s;            
-
-            &:hover{
-                color: gray;
-            }
-            
-        }
+    span.user-name {
+      text-align: center;
+      font-size: 21px;
+      font-weight: 100;
+      padding: 17px;
     }
+  }
 
+  .mat-dialog-actions {
+    border-top: 1px solid #d2d2d2;
+    margin-top: 46px;
+
+    .logout-btn {
+      font-size: 13px;
+      color: #aaa;
+      cursor: pointer;
+      transition: color 0.2s;
+
+      &:hover {
+        color: gray;
+      }
+    }
+  }
 }
 @-webkit-keyframes changecolor {
-    0% {
-       color: gray; 
-    }
-   
-    100% {
-       color: #fed305; 
-    }
+  0% {
+    color: gray;
+  }
+
+  100% {
+    color: #fed305;
+  }
 }
 
 @keyframes changecolor {
-    0% {
-       color: gray; 
-    }
-   
-    100% {
-       color: #e37a02; 
-    }
+  0% {
+    color: gray;
+  }
+
+  100% {
+    color: #e37a02;
+  }
 }
 
 @-webkit-keyframes round {

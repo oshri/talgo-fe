@@ -20,6 +20,7 @@ import { Subscription } from "rxjs/Subscription";
 import { switchMap } from "rxjs/operators";
 import { IUser } from "../../models";
 import { FirebaseApp } from "angularfire2";
+import { LoadingService } from "../../modules/loading/services/loading/loading.service";
 
 @Injectable()
 export class AuthSrv {
@@ -31,7 +32,8 @@ export class AuthSrv {
     @Inject(Router) private router: Router,
     @Inject(ActivatedRoute) private route: ActivatedRoute,
     @Inject(AngularFireAuth) private afAuth: AngularFireAuth,
-    @Inject(AngularFirestore) private afStore: AngularFirestore
+    @Inject(AngularFirestore) private afStore: AngularFirestore,
+    @Inject(LoadingService) private loading: LoadingService
   ) {
     this.user = afAuth.authState.switchMap(user => {
       if (user) {
@@ -54,8 +56,11 @@ export class AuthSrv {
   }
 
   private oAuthLogin(provider) {
+    this.loading.setValue(true);
     return this.afAuth.auth.signInWithPopup(provider).then(credentials => {
       this.updateUserData(credentials.user);
+      this.router.navigate(["/markets"]);
+      this.loading.setValue(false);
     });
   }
 

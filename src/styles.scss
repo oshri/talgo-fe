@@ -13,4 +13,8 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   background-color: #f8f8f8;
+
+  ng-component {
+    display: block;
+  }
 }

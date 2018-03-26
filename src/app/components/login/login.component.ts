@@ -3,6 +3,11 @@ import { Router, ActivatedRoute, Params } from "@angular/router";
 import { Subscription } from "rxjs/Subscription";
 import { AuthSrv } from "../../services/auth/auth.service";
 
+import {
+  fadeInAnimation,
+  slideInOutAnimation
+} from "../../utils/routerTransition/routerTransition";
+
 @Component({
   selector: "tg-login",
   styleUrls: ["login.component.scss"],

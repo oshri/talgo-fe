@@ -2,6 +2,10 @@ import { Component, Inject } from "@angular/core";
 import { Observable, Subscribable } from "rxjs/Observable";
 import { MarketsSrv } from "../../services/markets/markets.service";
 import { IMarket } from "../../models";
+import {
+  slideInOutAnimation,
+  fadeInAnimation
+} from "../../../../utils/routerTransition/routerTransition";
 
 @Component({
   selector: "tg-markets-tabs",

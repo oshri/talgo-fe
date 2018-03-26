@@ -9,6 +9,7 @@ import { tap, catchError } from "rxjs/operators";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Observable } from "rxjs/Observable";
 import { IMarketAuth, IBalance } from "../../models";
+import { LoadingService } from "../../../../modules/loading/services/loading/loading.service";
 
 const BALANCE: IBalance[] = [
   {
@@ -90,15 +91,16 @@ export class MarketsAuth {
     IBalance[]
   > = new BehaviorSubject(BALANCE);
 
-  constructor(@Inject(HttpClient) private http: HttpClient) {}
-  // public market(name: string, IMarketAuth): Observable<IBalance[]> {
-  //   return this.BinanceFakeBalanceResponse;
-  // }
+  constructor(
+    @Inject(LoadingService) private Loading: LoadingService,
+    @Inject(HttpClient) private http: HttpClient
+  ) {}
 
   public market(
     marketName: string,
     marketSecret: IMarketAuth
   ): Observable<any> {
+    this.Loading.setValue(true);
     const httpOptions = {
       headers: new HttpHeaders({
         "Content-Type": "application/json",
@@ -111,6 +113,7 @@ export class MarketsAuth {
   }
 
   handleError(erros?: HttpErrorResponse) {
+    this.Loading.setValue(false);
     if (erros.error instanceof Error) {
       console.log("Client-side error occured.");
     } else {

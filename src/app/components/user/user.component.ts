@@ -33,7 +33,10 @@ export class TgUserComponent {
   openDialog() {
     let dialogRef = this.dialog.open(UserProfileDialogComponent, {
       width: "400px",
-      height: "400px"
+      height: "400px",
+      data: {
+        user: this.user
+      }
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log("after closed", result);

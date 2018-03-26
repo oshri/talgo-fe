@@ -4,7 +4,8 @@ import {
   EventEmitter,
   Input,
   Output,
-  ViewChild
+  ViewChild,
+  Inject
 } from "@angular/core";
 import { AuthSrv } from "../../services/auth/auth.service";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
@@ -19,8 +20,10 @@ export class UserProfileDialogComponent {
   user: any;
 
   constructor(
-    public authSrv: AuthSrv,
-    public dialogRef: MatDialogRef<UserProfileDialogComponent>
+    @Inject(AuthSrv) public authSrv: AuthSrv,
+    @Inject(MatDialogRef)
+    public dialogRef: MatDialogRef<UserProfileDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
   logout() {
