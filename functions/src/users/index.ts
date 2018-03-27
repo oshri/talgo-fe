@@ -11,6 +11,26 @@ export const createUserAccount = functions.auth.user().onCreate(event => {
   const photoUrl = event.data.photoURL || "";
   const displayName = event.data.displayName;
 
+  const msg = {
+    to: email,
+    from: "hello@talgo.com",
+    subject: "Welcome",
+    templateId: "7d087c6a-6958-45cc-aafd-b79754a697bb",
+    substitutionWrappers: ["{{", "}}"],
+    substitutions: {
+      name: displayName
+    }
+  };
+
+  return sendgridMail
+    .send(msg)
+    .then(() => {
+      console.log("Email sent");
+    })
+    .catch(error => {
+      console.log("Send Welcome Email erorr", error);
+    });
+
   //   const db = admin.database();
   //   const newUserRef = db.ref(`/users/${uid}`);
 
