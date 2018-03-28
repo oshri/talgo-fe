@@ -16,61 +16,17 @@ exports.createUserAccount = functions.auth.user().onCreate(event => {
         templateId: "7d087c6a-6958-45cc-aafd-b79754a697bb",
         substitutionWrappers: ["{{", "}}"],
         substitutions: {
-            name: displayName
+            displayName: displayName,
+            customerID: uid
         }
     };
     return sendgridMail
         .send(msg)
         .then(() => {
-        console.log("Email sent");
+        console.log("Confirm Email sent");
     })
         .catch(error => {
-        console.log("Send Welcome Email erorr", error);
+        console.log("Confirm Email sent erorr", error);
     });
-    //   const db = admin.database();
-    //   const newUserRef = db.ref(`/users/${uid}`);
-    //   return newUserRef
-    //     .set({
-    //       uid: uid,
-    //       email: email,
-    //       displayName: displayName,
-    //       photoUrl: photoUrl
-    //     })
-    //     .then(user => {
-    //       console.log("User created");
-    //       return user;
-    //     })
-    //     .catch(error => {
-    //       console.log("User created erorr", error);
-    //     });
 });
-// export const welcomeMail = functions.database
-//   .ref("/users/{uid}")
-//   .onWrite(event => {
-//     let user = event.data.val();
-//     const db = admin.database();
-//     return db
-//       .ref("users/" + userUid)
-//       .once("value")
-//       .then(snapshot => {
-//         const user = snapshot.val();
-//         const msg = {
-//           to: user.email,
-//           from: "hello@talgo.com",
-//           subject: "Welcome",
-//           templateId: "7d087c6a-6958-45cc-aafd-b79754a697bb",
-//           substitutionWrappers: ["{{", "}}"],
-//           substitutions: {
-//             name: user.displayName
-//           }
-//         };
-//         return sendgridMail.send(msg);
-//       })
-//       .then(() => {
-//         console.log("Email sent");
-//       })
-//       .catch(error => {
-//         console.log("Send Welcome Email erorr", error);
-//       });
-//   });
 //# sourceMappingURL=index.js.map
