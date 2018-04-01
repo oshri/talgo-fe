@@ -5,6 +5,7 @@ export interface IUser {
   email: string;
   photoUrl?: string;
   displayName?: string;
+  emailConfirm: boolean;
   markets?: IUserMarket;
 }
 

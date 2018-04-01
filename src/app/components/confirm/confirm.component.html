@@ -1,0 +1,11 @@
+<div>
+    <h1>Confirm Email</h1>
+    <form [formGroup]="form" fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-form-field fxFlex="45">
+            <input matInput formControlName="email" placeholder="Your Email">
+        </mat-form-field>
+        <button class="save-btn" mat-raised-button color="accent" type="submit" (click)="emitForm()" [disabled]="form.invalid">
+            CONFIRM
+        </button>
+    </form>
+</div>

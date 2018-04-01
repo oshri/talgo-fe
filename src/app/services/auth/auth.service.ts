@@ -4,8 +4,8 @@ import {
   HttpHeaders,
   HttpErrorResponse
 } from "@angular/common/http";
-import { Router, ActivatedRoute, Params } from "@angular/router";
 import { RequestOptions, Request, RequestMethod } from "@angular/http";
+import { Router, ActivatedRoute, Params } from "@angular/router";
 import * as firebase from "firebase/app";
 import { AngularFireAuth } from "angularfire2/auth";
 import {
@@ -27,13 +27,15 @@ export class AuthSrv {
   user: Observable<IUser>;
   routeSub: any;
   routeAfterLogin: string;
+  firebaseUrl = "https://us-central1-talgo-f783b.cloudfunctions.net/confirmEmail";
 
   constructor(
     @Inject(Router) private router: Router,
     @Inject(ActivatedRoute) private route: ActivatedRoute,
     @Inject(AngularFireAuth) private afAuth: AngularFireAuth,
     @Inject(AngularFirestore) private afStore: AngularFirestore,
-    @Inject(LoadingService) private loading: LoadingService
+    @Inject(LoadingService) private loading: LoadingService,
+    @Inject(HttpClient) private http: HttpClient
   ) {
     this.user = afAuth.authState.switchMap(user => {
       if (user) {
@@ -44,15 +46,41 @@ export class AuthSrv {
     });
   }
 
-  facebookLogin() {
+  public facebookLogin() {
     const provider = new firebase.auth.FacebookAuthProvider();
     return this.oAuthLogin(provider);
   }
 
-  signOut() {
+  public signOut() {
     this.afAuth.auth.signOut().then(() => {
       this.router.navigate(["/login"]);
     });
+  }
+
+  public confirmEmail(email: string, uid: string): Observable<any> {
+    this.loading.setValue(true);
+    const body = JSON.stringify({
+      email,
+      token: uid
+    });
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      })
+    };
+
+    return this.http.post(this.firebaseUrl, body, httpOptions);
+  }
+
+  private handleError(erros?: HttpErrorResponse) {
+    this.loading.setValue(false);
+    if (erros.error instanceof Error) {
+      console.log("Client-side error occured.");
+    } else {
+      console.log("Server-side error occured.");
+    }
   }
 
   private oAuthLogin(provider) {
@@ -73,7 +101,8 @@ export class AuthSrv {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
-      photoUrl: user.photoURL
+      photoUrl: user.photoURL,
+      emailConfirm: false
     };
 
     return userRef.set(userData);
