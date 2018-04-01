@@ -7,6 +7,9 @@ const markets = require("./markets");
 const users = require("./users");
 // Mails
 exports.createUserAccount = users.createUserAccount;
+exports.confirmEmail = users.confirmEmail;
 // Markets
 exports.addMarket = markets.addMarket;
+// HOW To setup global env var
+// firebase functions:config:set someservice.key="THE API KEY"
 //# sourceMappingURL=index.js.map

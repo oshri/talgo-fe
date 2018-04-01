@@ -8,6 +8,10 @@ import * as users from "./users";
 
 // Mails
 export const createUserAccount = users.createUserAccount;
+export const confirmEmail = users.confirmEmail;
 
 // Markets
 export const addMarket = markets.addMarket;
+
+// HOW To setup global env var
+// firebase functions:config:set someservice.key="THE API KEY"
