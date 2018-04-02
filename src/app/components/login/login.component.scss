@@ -1,3 +1,44 @@
 :host(tg-login) {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: fixed;
 
+  .login-container {
+    display: block;
+    height: inherit;
+
+    .splash {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: url("https://source.unsplash.com/Q1p7bh3SHj8/400");
+      width: 40%;
+      height: inherit;
+      float: left;
+
+      .talgo-logo {
+        margin: 25px;
+        width: 100px;
+      }
+    }
+
+    .welcome {
+      padding: 13px;
+
+      .facebook-login {
+        background: rgba(66, 103, 178, 0.68);
+        border-color: #4267b2;
+        color: white;
+
+        &:hover {
+          background: rgba(66, 103, 178, 1);
+        }
+      }
+
+      .welcome-meaagse {
+        padding-top: 100px;
+      }
+    }
+  }
 }

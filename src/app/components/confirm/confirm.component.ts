@@ -6,6 +6,7 @@ import {
   Params,
   ActivatedRouteSnapshot
 } from "@angular/router";
+import { MatSnackBar } from "@angular/material";
 import { Subscription } from "rxjs/Subscription";
 import { AuthSrv } from "../../services/auth/auth.service";
 import { LoadingService } from "../../modules/loading/services/loading/loading.service";
@@ -28,7 +29,8 @@ export class TgConfirmComponent implements OnInit, OnDestroy {
     @Inject(AuthSrv) public authSrv: AuthSrv,
     @Inject(Router) private router: Router,
     @Inject(ActivatedRoute) private route: ActivatedRoute,
-    @Inject(LoadingService) private loadingService: LoadingService
+    @Inject(LoadingService) private loadingService: LoadingService,
+    @Inject(MatSnackBar) private snackBar: MatSnackBar
   ) {
     this.paramsSubscription = this.route.params.subscribe(params => {
       this.uid = params["id"];
@@ -46,12 +48,16 @@ export class TgConfirmComponent implements OnInit, OnDestroy {
   }
 
   emitForm() {
-    this.authSrv
-      .confirmEmail(this.form.value.email, this.uid)
-      .subscribe(res => {
-        console.log(res);
+    this.authSrv.confirmEmail(this.form.value.email, this.uid).subscribe(
+      res => {
         this.loadingService.setValue(false);
         this.router.navigate(["/markets"]);
-      });
+      },
+      _error => {
+        this.loadingService.setValue(false);
+        this.form.reset();
+        this.snackBar.open(_error.error.message, "Erorr", { duration: 1000 });
+      }
+    );
   }
 }

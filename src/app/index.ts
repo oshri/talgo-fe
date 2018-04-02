@@ -17,6 +17,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatDialogModule } from "@angular/material/dialog";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 // Components
 import { TalGoComponent } from "./components/talgo/talgo.component";
@@ -56,6 +57,7 @@ import { AuthGuard } from "./services/guard/auth.guard";
     FlexLayoutModule,
     MatToolbarModule,
     MatDialogModule,
+    MatSnackBarModule,
     AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [AuthSrv, AuthGuard],

@@ -1,7 +1,10 @@
 <mat-toolbar class="app-header" color="primary" [@authenticated]="authenticated">
         <mat-toolbar-row>
                 <div class="talGo-app-icon" fxFlex="183px">
-                        <span [class.white]="authenticated">TalGo</span>
+                        <mat-icon class="talgo-logo" svgIcon="talgo-white"></mat-icon>
+                        <!-- <span [class.white]="authenticated">
+
+                        </span> -->
                 </div>
                 <div class="common-links" fxFlex="80%"></div>
                 <div fxLayout="row" fxLayoutAlign="end center">

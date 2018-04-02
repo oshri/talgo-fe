@@ -1,4 +1,6 @@
 import { Component, Inject } from "@angular/core";
+import { DomSanitizer } from "@angular/platform-browser";
+import { MatIconRegistry } from "@angular/material";
 import { AuthSrv } from "../../services/auth/auth.service";
 import {
   fadeInAnimation,
@@ -13,5 +15,24 @@ import {
   host: { "[@fadeInAnimation]": "" }
 })
 export class TalGoComponent {
-  constructor(@Inject(AuthSrv) public authSrv: AuthSrv) {}
+  constructor(
+    public authSrv: AuthSrv,
+    private iconRegistry: MatIconRegistry,
+    private sanitizer: DomSanitizer
+  ) {
+    iconRegistry.addSvgIcon(
+      "talgo-white",
+      sanitizer.bypassSecurityTrustResourceUrl("assets/logo/talgo-white.svg")
+    );
+
+    iconRegistry.addSvgIcon(
+      "talgo-gray",
+      sanitizer.bypassSecurityTrustResourceUrl("assets/logo/talgo-gray.svg")
+    );
+
+    iconRegistry.addSvgIcon(
+      "talgo-splash",
+      sanitizer.bypassSecurityTrustResourceUrl("assets/logo/talgo-splash.svg")
+    );
+  }
 }

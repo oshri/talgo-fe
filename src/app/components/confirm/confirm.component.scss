@@ -1,0 +1,36 @@
+:host(tg-confirm) {
+  padding: 13px;
+  display: block;
+
+  h1 {
+    font-size: 28px;
+    font-weight: 400;
+    color: #434c5f;
+    margin: 0;
+    text-align: center;
+  }
+
+  .talgo-logo {
+    margin: 25px;
+    width: 100px;
+  }
+
+  .content {
+    position: absolute;
+    width: 100%;
+    top: 30%;
+    transform: translateY(-30%);
+  }
+
+  form {
+    width: 350px;
+
+    .confirm-btn {
+      border: 2px solid #596377;
+
+      &:disabled {
+        border: 1px solid #596377;
+      }
+    }
+  }
+}

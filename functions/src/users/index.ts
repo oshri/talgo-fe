@@ -73,9 +73,7 @@ export const confirmEmail = functions.https.onRequest((req, res) => {
           .catch(e => console.log("updateUser", e));
 
         return res.status(200).send({
-          message: "Your Email Confirm, you can login.",
-          authData,
-          email
+          message: "Your Email Confirm, you can login."
         });
       }
     });

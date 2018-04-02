@@ -1,11 +1,25 @@
-<div>
-    <h1>Confirm Email</h1>
-    <form [formGroup]="form" fxLayout="row" fxLayoutAlign="space-between center">
-        <mat-form-field fxFlex="45">
-            <input matInput formControlName="email" placeholder="Your Email">
-        </mat-form-field>
-        <button class="save-btn" mat-raised-button color="accent" type="submit" (click)="emitForm()" [disabled]="form.invalid">
-            CONFIRM
-        </button>
-    </form>
+<div fxLayout="column">
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <div fxFlex="50">
+            <mat-icon class="talgo-logo" svgIcon="talgo-gray"></mat-icon>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="end center" fxFlex="50">
+            <span>Already have an account?</span>
+            <button class="radius-btn login-btn" color="accent" (click)="authSrv.facebookLogin()">
+                SIGN IN
+            </button>
+        </div>
+    </div>
+    <div class="content" fxLayout="column" fxLayoutAlign="space-around center">
+        <h1>Confirm Email</h1>
+        <p>To activate your account, please Enter your email address below.</p>
+        <form [formGroup]="form" fxLayout="column" fxLayoutAlign="space-between center">
+            <mat-form-field fxFill>
+                <input matInput formControlName="email" placeholder="Your Email">
+            </mat-form-field>
+            <button class="radius-btn confirm-btn" color="accent" type="submit" (click)="emitForm()" [disabled]="form.invalid">
+                CONFIRM
+            </button>
+        </form>
+    </div>
 </div>

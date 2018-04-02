@@ -1,3 +1,21 @@
-<div>
+<div class="login-container">
+    <div class="splash">
+        <mat-icon class="talgo-logo" svgIcon="talgo-splash"></mat-icon>
+    </div>
+    <div class="welcome" fxLayout="column" fxLayoutAlign=" stretch">
+        <div fxLayout="row" fxLayoutAlign="end center">
+            <span>Already have an account?</span>
+            <button class="radius-btn login-btn" color="accent" (click)="authSrv.facebookLogin()">
+                SIGN IN
+            </button>
+        </div>
+        <div class="welcome-meaagse" fxLayout="column" fxLayoutAlign="center center">
+            <h1>Get started absolutely free.</h1>
+            <p>Free forever. No credit card needed.</p>
+            <button class="radius-btn facebook-login" color="accent" (click)="authSrv.facebookLogin()">
+                FACEBOOK LOGIN
+            </button>
+        </div>
 
+    </div>
 </div>
