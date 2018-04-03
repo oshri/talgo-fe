@@ -15,7 +15,7 @@ const crs = cors({
   ],
   credentials: true,
   methods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
-  origin: "http://localhost:4200",
+  origin: ["http://localhost:4200", "https://talgo-f783b.firebaseapp.com"],
   preflightContinue: false
 });
 

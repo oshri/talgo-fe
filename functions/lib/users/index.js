@@ -16,7 +16,7 @@ const crs = cors({
     ],
     credentials: true,
     methods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
-    origin: "http://localhost:4200",
+    origin: ["http://localhost:4200", "https://talgo-f783b.firebaseapp.com"],
     preflightContinue: false
 });
 const JWT_SECRET_KEY = functions.config().jwt.key;
@@ -65,9 +65,7 @@ exports.confirmEmail = functions.https.onRequest((req, res) => {
                     .then(doc => console.log("success Update User", doc))
                     .catch(e => console.log("updateUser", e));
                 return res.status(200).send({
-                    message: "Your Email Confirm, you can login.",
-                    authData,
-                    email
+                    message: "Your Email Confirm, you can login."
                 });
             }
         });
