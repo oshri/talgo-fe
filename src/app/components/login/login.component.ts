@@ -13,6 +13,15 @@ import {
   styleUrls: ["login.component.scss"],
   templateUrl: "login.component.html"
 })
-export class TgLoginComponent {
-  constructor(@Inject(AuthSrv) public authSrv: AuthSrv) {}
+export class TgLoginComponent implements OnInit {
+  constructor(
+    @Inject(AuthSrv) public authSrv: AuthSrv,
+    @Inject(Router) private router: Router
+  ) {}
+
+  ngOnInit() {
+    // this.authSrv.user.subscribe(res => {
+    //   this.router.navigate(["/markets"]);
+    // });
+  }
 }

@@ -19,11 +19,13 @@ import { AngularFireAuthModule } from "angularfire2/auth";
 import { TgMarketAuthComponent } from "./components/marketAuth/marketAuth.component";
 import { TgBalanceComponent } from "./components/balance/balance.component";
 import { TgSpreadComponent } from "./components/spread/spread.component";
+import { TgSpreadResponseComponent } from "./components/spreadResponse/spreadResponse.component";
 
 const COMPONENTS = [
   TgMarketAuthComponent,
   TgBalanceComponent,
-  TgSpreadComponent
+  TgSpreadComponent,
+  TgSpreadResponseComponent
 ];
 
 // Services

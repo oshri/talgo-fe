@@ -1,45 +1,47 @@
-<mat-card>
-    <mat-card-header fxLayout="row" fxLayoutAlign="space-between center">
-        <mat-card-title>Spread Form</mat-card-title>
-        <mat-slide-toggle [checked]="dry_mode_status" [disabled]="dry_mode_disabled">
-            Dry mode
-        </mat-slide-toggle>
-    </mat-card-header>
-    <mat-card-content>
-        <form [formGroup]="form" fxLayout="column" fxLayoutAlign="space-around">
-            <div class="section" fxLayout="row" fxLayoutAlign="space-between center">
-                <mat-form-field>
-                    <mat-select placeholder="Choose Symbol" formControlName="symbol">
-                        <mat-option *ngFor="let ticker of tickers" [value]="ticker.symbol">
-                            {{ ticker.symbol }} - {{ticker.price}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-select placeholder="Side" formControlName="side">
-                        <mat-option *ngFor="let side of sides" [value]="side">
-                            {{ side }}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field>
-                    <input matInput type="number" formControlName="amount" placeholder="Amount">
-                </mat-form-field>
+<form [formGroup]="form">
+    <mat-card>
+        <mat-card-header fxLayout="row" fxLayoutAlign="space-between center">
+            <mat-card-title>Spread Form</mat-card-title>
+            <mat-slide-toggle color="primary" formControlName="dry_mode">
+                Dry mode
+            </mat-slide-toggle>
+        </mat-card-header>
+        <mat-card-content>
+            <div fxLayout="column" fxLayoutAlign="space-around">
+                <div class="section" fxLayout="row" fxLayoutAlign="space-between center">
+                    <mat-form-field>
+                        <mat-select placeholder="Choose Symbol" formControlName="symbol">
+                            <mat-option *ngFor="let ticker of tickers" [value]="ticker.symbol">
+                                {{ ticker.symbol }} - {{ticker.price}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-select placeholder="Side" formControlName="side">
+                            <mat-option *ngFor="let side of sides" [value]="side">
+                                {{ side }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput type="number" formControlName="amount" placeholder="Amount">
+                    </mat-form-field>
+                </div>
+                <div class="section" fxLayout="row" fxLayoutAlign="space-between">
+                    <mat-form-field>
+                        <input matInput type="number" formControlName="first_order_percentage" placeholder="First Order %">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput type="number" formControlName="spread" placeholder="Spread">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput type="number" formControlName="spread_step_size_percentage" placeholder="Spread Step Size in %">
+                    </mat-form-field>
+                </div>
+                <button class="save-btn" mat-raised-button color="accent" type="submit" (click)="emitForm()" [disabled]="form.invalid">
+                    SEND {{ dryMode ? '(Live Mode)' : '(Dry Mode)'}}
+                </button>
             </div>
-            <div class="section" fxLayout="row" fxLayoutAlign="space-between">
-                <mat-form-field>
-                    <input matInput type="number" formControlName="first_order_percentage" placeholder="First Order %">
-                </mat-form-field>
-                <mat-form-field>
-                    <input matInput type="number" formControlName="spread" placeholder="Spread">
-                </mat-form-field>
-                <mat-form-field>
-                    <input matInput type="number" formControlName="spread_step_size_percentage" placeholder="Spread Step Size in %">
-                </mat-form-field>
-            </div>
-            <button class="save-btn" mat-raised-button color="accent" type="submit" (click)="emitForm()" [disabled]="form.invalid">
-                SEND {{ dry_mode_status ? '(Live Mode)' : '(Dray Mode)'}}
-            </button>
-        </form>
-    </mat-card-content>
-</mat-card>
+        </mat-card-content>
+    </mat-card>
+</form>

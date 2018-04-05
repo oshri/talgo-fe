@@ -37,6 +37,10 @@ export class TgSpreadComponent implements OnInit {
     });
   }
 
+  get dryMode() {
+    return this.form.controls["dry_mode"].value;
+  }
+
   emitForm() {
     this.submit.emit(this.form.value);
   }

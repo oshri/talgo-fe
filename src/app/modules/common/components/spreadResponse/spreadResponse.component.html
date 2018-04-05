@@ -1,0 +1,13 @@
+<mat-card>
+    <mat-card-header fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-card-title>Spread Response</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-list-item *ngFor="let res of response; last as last">
+            <div fxLayout="row" fxLayoutAlign="space-around start" fxFill>
+                <span>{{res}}</span>
+            </div>
+            <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+        </mat-list-item>
+    </mat-card-content>
+</mat-card>

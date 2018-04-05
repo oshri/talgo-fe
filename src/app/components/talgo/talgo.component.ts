@@ -34,5 +34,12 @@ export class TalGoComponent {
       "talgo-splash",
       sanitizer.bypassSecurityTrustResourceUrl("assets/logo/talgo-splash.svg")
     );
+
+    iconRegistry.addSvgIcon(
+      "the-bit-standard",
+      sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/logo/TheBitStandard-logo.svg"
+      )
+    );
   }
 }

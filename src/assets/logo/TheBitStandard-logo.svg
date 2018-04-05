@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="69px" height="60px" viewBox="0 0 69 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>TheBitStandard-logo</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="101.999998%" y2="100.999999%" id="linearGradient-1">
+            <stop stop-color="#3023AE" offset="0%"></stop>
+            <stop stop-color="#C86DD7" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="thebitstandard-gray-c" transform="translate(-692.000000, -15.000000)" fill="url(#linearGradient-1)">
+            <path d="M692,15 L760.98281,15 L759.131267,18.5809062 L728.816395,18.5809062 L728.816395,72.3022974 L726.712044,75 L724.486813,72.3022974 L724.486813,18.5809062 L694.422798,18.5809062 L692,15 Z M695.632972,21.1767796 L722.389388,21.1767796 L722.389388,66.9931293 L695.632972,21.1767796 Z M701.652415,24.4373353 L707.151139,33.4615929 L719.452117,33.4615929 L719.452117,24.4373353 L701.652415,24.4373353 Z M709.133566,37.6960433 L719.150769,54.2990146 L719.150769,37.6960433 L709.133566,37.6960433 Z M757.063724,21.3981483 L730.307308,67.214498 L730.307308,21.3981483 L757.063724,21.3981483 Z M751.044281,24.658704 L733.244579,24.658704 L733.244579,33.6829616 L745.545557,33.6829616 L751.044281,24.658704 Z M743.56313,37.917412 L733.545927,37.917412 L733.545927,54.5203834 L743.56313,37.917412 Z" id="TheBitStandard-logo"></path>
+        </g>
+    </g>
+</svg>

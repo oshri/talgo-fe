@@ -1,9 +1,10 @@
 <div fxLayout="column" fxLayoutAlign="space-around none">
     <tg-market-auth (onSubmit)="submit($event)"></tg-market-auth>
     <div class="content" fxLayout="row" *ngIf="balance">
-        <tg-balance [list]="balance" fxFlex="40"></tg-balance>
-        <div *ngIf="symbols" fxLayout="column" fxLayoutAlign="start none" fxFlex="60" fxFlexOffset="2">
+        <tg-balance [list]="balance" fxFlex="30"></tg-balance>
+        <div *ngIf="symbols" fxLayout="column" fxLayoutAlign="start none" fxFlex="70" fxFlexOffset="2">
             <tg-spread [tickers]="symbols" (submit)="getSpread($event)"></tg-spread>
+            <tg-spread-response *ngIf="spread" [response]="spread"></tg-spread-response>
         </div>
     </div>
 </div>

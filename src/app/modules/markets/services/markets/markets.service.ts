@@ -496,8 +496,8 @@ export class MarketsSrv {
     const body = JSON.stringify(data);
 
     const url = `${this.url}${marketName}/spread `;
-    return Observable.of(SPREAD);
-    // return this.http.post(url, body, httpOptions);
+    // return Observable.of(SPREAD);
+    return this.http.post(url, body, httpOptions);
   }
 
   public getTickers(
@@ -514,7 +514,7 @@ export class MarketsSrv {
     const body = JSON.stringify(marketToken);
 
     const url = `${this.url}${marketName}/tickers`;
-    return Observable.of(TICKERS);
-    // return this.http.post(url, body, httpOptions);
+    // return Observable.of(TICKERS);
+    return this.http.post(url, body, httpOptions);
   }
 }
