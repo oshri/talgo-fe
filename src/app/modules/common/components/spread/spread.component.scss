@@ -1,0 +1,11 @@
+:host(tg-spread) {
+  .section {
+    height: 80px;
+
+    /deep/ mat-form-field {
+      .mat-form-field-infix {
+        padding: 1.2em 0;
+      }
+    }
+  }
+}

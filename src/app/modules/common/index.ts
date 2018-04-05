@@ -8,6 +8,9 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { MatListModule } from "@angular/material/list";
 import { MatDividerModule } from "@angular/material/divider";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { MatSelectModule } from "@angular/material/select";
+
 import { AngularFireModule } from "angularfire2";
 import { AngularFirestoreModule } from "angularfire2/firestore";
 import { AngularFireAuthModule } from "angularfire2/auth";
@@ -15,8 +18,13 @@ import { AngularFireAuthModule } from "angularfire2/auth";
 // Components
 import { TgMarketAuthComponent } from "./components/marketAuth/marketAuth.component";
 import { TgBalanceComponent } from "./components/balance/balance.component";
+import { TgSpreadComponent } from "./components/spread/spread.component";
 
-const COMPONENTS = [TgMarketAuthComponent, TgBalanceComponent];
+const COMPONENTS = [
+  TgMarketAuthComponent,
+  TgBalanceComponent,
+  TgSpreadComponent
+];
 
 // Services
 import { MarketsAuth } from "./services/marketAuth/marketAuth.service";
@@ -37,7 +45,9 @@ import { MarketsAuth } from "./services/marketAuth/marketAuth.service";
     RouterModule,
     MatCardModule,
     MatListModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSlideToggleModule,
+    MatSelectModule
   ],
   providers: [MarketsAuth],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

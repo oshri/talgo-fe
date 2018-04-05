@@ -3,7 +3,7 @@
 
 $talgo-primary: mat-palette($mat-blue-gray, 900);
 $talgo-accent: mat-palette($mat-gray, A200, A100, A400);
-$talgo-warn: mat-palette($mat-deep-orange);
+$talgo-warn: mat-palette($mat-red, 600);
 
 $talgo-theme: mat-light-theme($talgo-primary, $talgo-accent, $talgo-warn);
 @include angular-material-theme($talgo-theme);

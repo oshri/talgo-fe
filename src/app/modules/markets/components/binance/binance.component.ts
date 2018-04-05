@@ -8,7 +8,10 @@ import {
   fadeInAnimation
 } from "../../../../utils/routerTransition/routerTransition";
 
+import { MarketsSrv } from "../../services/markets/markets.service";
 import { LoadingService } from "../../../../modules/loading/services/loading/loading.service";
+import { ITickers } from "../../models";
+import { ISpreadForm } from "../../../common/models";
 
 @Component({
   selector: "tg-binance",
@@ -16,19 +19,36 @@ import { LoadingService } from "../../../../modules/loading/services/loading/loa
   templateUrl: "./binance.component.html"
 })
 export class TgBinanceComponent {
+  marketAuth: IMarketAuth;
   balance: IBalance[];
+  symbols: ITickers[];
+  spread: [string];
 
   constructor(
     @Inject(LoadingService) private Loading: LoadingService,
+    @Inject(MarketsSrv) private marketsSrv: MarketsSrv,
     @Inject(MarketsAuth) private marketsAuth: MarketsAuth
   ) {}
 
   submit(event: IMarketAuth) {
+    this.marketAuth = event;
+
     this.marketsAuth
       .market("binance", event)
       .subscribe((response: IBalance[]) => {
-        this.Loading.setValue(false);
-        this.balance = response;
+        this.marketsSrv.getTickers("binance", event).subscribe(tickers => {
+          this.symbols = tickers;
+          this.Loading.setValue(false);
+          this.balance = response;
+        });
+      });
+  }
+
+  getSpread(event: ISpreadForm) {
+    this.marketsSrv
+      .getSpread("binance", this.marketAuth, event)
+      .subscribe(res => {
+        this.spread = res;
       });
   }
 }
