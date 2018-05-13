@@ -487,8 +487,7 @@ export class MarketsSrv {
   ): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*"
+        "Content-Type": "application/json"
       })
     };
 
@@ -506,8 +505,7 @@ export class MarketsSrv {
   ): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*"
+        "Content-Type": "application/json"
       })
     };
 
